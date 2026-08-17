@@ -10,3 +10,12 @@ class Employee:
         self.first = first
         self.last = last
         self.pay = pay
+
+    @property
+    def email(self):
+        return f"{self.first}.{self.last}@company.com"
+
+
+if __name__ == "__main__":
+    f = Employee("flint", "coffie", 4000)
+    print(f.email)
