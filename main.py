@@ -6,6 +6,7 @@ employees = {}
 
 
 # functions
+# option 1
 def add_employee():
     # take inputs
     first = input("Enter first name: ")
@@ -26,6 +27,15 @@ def erase_employee():
     print(f"Erased {removed.fullname} from staff records")
 
 
+# option 3
+def print_details():
+    fullname = input("Enter Fullname: ")
+    if fullname in employees:
+        print(employees[fullname])
+    else:
+        print("No such employee.")
+
+
 def main():
     # Visuals
     print("==========================")
@@ -37,6 +47,7 @@ def main():
     print("2. Erase Employee\n")
     print("3. Employee details\n")
     print("4. Total number of Employees\n")
+    print("5. Exit\n")
 
     # adding employees
     while True:
@@ -49,7 +60,7 @@ def main():
             print("ValueError Incorrect Input")
             continue
 
-        if not user_input in range(1, 5):
+        if not user_input in range(1, 6):
             continue
 
         elif user_input == 1:
@@ -57,6 +68,16 @@ def main():
 
         elif user_input == 2:
             erase_employee()
+
+        elif user_input == 3:
+            print_details()
+
+        elif user_input == 4:
+            print(f"Total number of employees: {len(employees)}")
+
+        elif user_input == 5:
+            print("Exiting...............")
+            break
 
 
 if __name__ == "__main__":
