@@ -7,13 +7,23 @@ employees = {}
 
 # functions
 def add_employee():
+    # take inputs
     first = input("Enter first name: ")
     last = input("Enter last name: ")
-    pay = input("Enter pay amount: ")
-    index = first
-    first = Employee(first, last, pay)
-    employees[index] = first
-    return employees
+    pay = int(input("Enter pay amount: "))
+
+    # make index
+    staff = Employee(first, last, pay)
+    employees[staff.fullname] = staff
+    print("added employees")
+    print(employees)
+
+
+# option 2
+def erase_employee():
+    fullname = input("Enter Fullname: ")
+    removed = employees.pop(fullname, None)
+    print(f"Erased {removed.fullname} from staff records")
 
 
 def main():
@@ -31,11 +41,22 @@ def main():
     # adding employees
     while True:
         user_input = input("Enter your input: ")
-        if not user_input in range(1:5):
-            raise ValueError ("Incorrect Input")
-    
-        if user_input == 1:
+
+        try:
+            user_input = int(user_input)
+
+        except ValueError:
+            print("ValueError Incorrect Input")
+            continue
+
+        if not user_input in range(1, 5):
+            continue
+
+        elif user_input == 1:
             add_employee()
+
+        elif user_input == 2:
+            erase_employee()
 
 
 if __name__ == "__main__":
