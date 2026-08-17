@@ -1,4 +1,6 @@
-# import employee class
+# imports
+import time
+
 from employee import Employee
 
 # store employees
@@ -11,10 +13,18 @@ def add_employee():
     # take inputs
     first = input("Enter first name: ")
     last = input("Enter last name: ")
-    pay = int(input("Enter pay amount: "))
+    try:
+        pay = int(input("Enter pay amount: "))
+    except ValueError:
+        print("Employee not added")
+        return
 
     # make index
-    staff = Employee(first, last, pay)
+    try:
+        staff = Employee(first, last, pay)
+    except ValueError:
+        print("ValueError Pay cannot be negative")
+        return
     employees[staff.fullname] = staff
     print("added employees")
     print(employees)
@@ -24,7 +34,10 @@ def add_employee():
 def erase_employee():
     fullname = input("Enter Fullname: ")
     removed = employees.pop(fullname, None)
-    print(f"Erased {removed.fullname} from staff records")
+    if removed:
+        print(f"Erased {removed.fullname} from staff records")
+    else:
+        print("No such employee")
 
 
 # option 3
@@ -36,21 +49,26 @@ def print_details():
         print("No such employee.")
 
 
+# option 4
+def total():
+    print(f"Total number of employees: {len(employees)}")
+
+
 def main():
     # Visuals
     print("==========================")
     print("===  Employee Manager  ===")
     print("==========================")
 
-    # Inputs
-    print("1. Add Employee\n")
-    print("2. Erase Employee\n")
-    print("3. Employee details\n")
-    print("4. Total number of Employees\n")
-    print("5. Exit\n")
-
     # adding employees
     while True:
+        # Inputs
+        print("1. Add Employee\n")
+        print("2. Erase Employee\n")
+        print("3. Employee details\n")
+        print("4. Total number of Employees\n")
+        print("5. Exit\n")
+
         user_input = input("Enter your input: ")
 
         try:
@@ -60,7 +78,8 @@ def main():
             print("ValueError Incorrect Input")
             continue
 
-        if not user_input in range(1, 6):
+        if user_input not in range(1, 6):
+            print("Invalid option, choose 1-5.")
             continue
 
         elif user_input == 1:
@@ -73,11 +92,13 @@ def main():
             print_details()
 
         elif user_input == 4:
-            print(f"Total number of employees: {len(employees)}")
+            total()
 
         elif user_input == 5:
             print("Exiting...............")
             break
+
+        time.sleep(2)
 
 
 if __name__ == "__main__":
