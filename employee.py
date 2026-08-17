@@ -8,6 +8,8 @@ class Employee:
 
     # initialize the class
     def __init__(self, first: str, last: str, pay: int):
+        if pay < 0:
+            raise ValueError("Pay cannot be negative")
         self.first = first
         self.last = last
         self.pay = pay
