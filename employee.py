@@ -10,7 +10,6 @@ class Employee:
         self.first = first
         self.last = last
         self.pay = pay
-        Employee.number_of_emps += 1
 
     # compute email
     @property
