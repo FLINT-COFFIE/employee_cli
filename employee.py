@@ -39,9 +39,9 @@ class Employee:
 
 
 if __name__ == "__main__":
-    f = Employee("flint", "coffie", 4000)
-    print(f.email)
-    print(f.number_of_emps)
-    print(f.fullname)
-    print(f.net_income())
-    print(f)
+    employee_1 = Employee("flint", "coffie", 4000)
+    print(employee_1.email)
+    print(employee_1.number_of_emps)
+    print(employee_1.fullname)
+    print(employee_1.net_income())
+    print(employee_1)
