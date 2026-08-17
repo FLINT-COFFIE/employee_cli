@@ -1,9 +1,6 @@
 # Employee class
-
-
 class Employee:
-    # class variables
-    number_of_emps = 0
+    # class variable
     tax_percentage = 0.055
 
     # initialize the class
