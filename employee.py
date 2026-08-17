@@ -33,11 +33,13 @@ class Employee:
     def __repr__(self):
         return f"Employee('{self.first}', '{self.last}', {self.pay})"
 
+    def __str__(self):
+        return f"Fullname: {self.fullname}\nEmail: {self.email}\nNet-Income: Ghc {float(self.net_income())}0\n"
+
 
 if __name__ == "__main__":
     employee_1 = Employee("flint", "coffie", 4000)
     print(employee_1.email)
-    print(employee_1.number_of_emps)
     print(employee_1.fullname)
     print(employee_1.net_income())
     print(employee_1)
